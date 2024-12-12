@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -12,9 +13,15 @@ export function HeroSection() {
           <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
             Decades of Excellence in Revenue Collection Solutions
           </p>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-colors">
+          {/* <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-colors">
             Get Started
-          </button>
+          </button> */}
+          <Link
+            href="/subscribe"
+            className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-colors"
+          >
+            Get Started
+          </Link>
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white dark:from-black to-transparent" />
