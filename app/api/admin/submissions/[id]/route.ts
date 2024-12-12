@@ -7,7 +7,7 @@ export async function PATCH(
 ) {
   try {
     const { status } = await request.json();
-    const id = params.id;
+    const { id } = await params;
 
     await sql`
       UPDATE rafwarz_subscription_requests 
