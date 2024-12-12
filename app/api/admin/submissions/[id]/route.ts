@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: number } }
+  context: { params: { id: string } }
 ) {
   try {
     const { status } = await request.json();
-    const { id } = await params;
+    const { id } = context.params;
 
     await sql`
       UPDATE rafwarz_subscription_requests 
