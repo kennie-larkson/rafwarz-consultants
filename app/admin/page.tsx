@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { SubmissionsTableSkeleton } from "../components/admin/skeleton/submission-table-skeleton";
 import { SubmissionsTable } from "../components/admin/submissions-table";
 
 export default function AdminDashboard() {
@@ -5,7 +7,9 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">Subscription Requests</h1>
-        <SubmissionsTable />
+        <Suspense fallback={<SubmissionsTableSkeleton />}>
+          <SubmissionsTable />
+        </Suspense>
       </div>
     </div>
   );

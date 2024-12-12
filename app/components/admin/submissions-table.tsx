@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { formatDistanceToNow } from "date-fns";
+import { SubmissionsTableSkeleton } from "./skeleton/submission-table-skeleton";
 
 interface Submission {
   id: number;
@@ -15,9 +16,9 @@ interface Submission {
   created_at: string;
 }
 
-export function SubmissionsTable() {
+export function SubmissionsTableContent() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  //const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -26,6 +27,9 @@ export function SubmissionsTable() {
 
   async function fetchSubmissions() {
     try {
+      // Add artificial delay to see the skeleton
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // 2 second delay
+
       const response = await fetch("/api/admin/submissions");
       if (!response.ok) throw new Error("Failed to fetch submissions");
       const data = await response.json();
@@ -33,9 +37,10 @@ export function SubmissionsTable() {
     } catch (err) {
       setError("Failed to load submissions");
       console.error(err);
-    } finally {
-      setIsLoading(false);
     }
+    /*  finally {
+      setIsLoading(false);
+    } */
   }
 
   async function updateStatus(id: number, newStatus: string) {
@@ -57,7 +62,7 @@ export function SubmissionsTable() {
     }
   }
 
-  if (isLoading) return <div>Loading...</div>;
+  //if (isLoading) return <div>Loading...</div>;
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
@@ -124,7 +129,7 @@ export function SubmissionsTable() {
                 <select
                   value={submission.status}
                   onChange={(e) => updateStatus(submission.id, e.target.value)}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-black rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 >
                   <option value="pending">Pending</option>
                   <option value="approved">Approved</option>
@@ -136,5 +141,13 @@ export function SubmissionsTable() {
         </tbody>
       </table>
     </div>
+  );
+}
+
+export function SubmissionsTable() {
+  return (
+    <Suspense fallback={<SubmissionsTableSkeleton />}>
+      <SubmissionsTableContent />
+    </Suspense>
   );
 }
