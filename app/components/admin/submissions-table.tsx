@@ -28,7 +28,7 @@ export function SubmissionsTableContent() {
   async function fetchSubmissions() {
     try {
       // Add artificial delay to see the skeleton
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // 2 second delay
+      //await new Promise((resolve) => setTimeout(resolve, 2000)); // 2 second delay
 
       const response = await fetch("/api/admin/submissions");
       if (!response.ok) throw new Error("Failed to fetch submissions");
