@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     } = await request.json();
 
     await sql`
-      INSERT INTO subscription_requests (
+      INSERT INTO rafwarz_subscription_requests (
         company_name,
         contact_person,
         email,
