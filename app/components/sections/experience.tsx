@@ -7,9 +7,9 @@ export function ExperienceSection() {
             Decades of Excellence
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">
-            With over 20 years of experience working with government agencies,
-            we've established ourselves as leaders in revenue collection
-            consulting.
+            With over 20 years of experience in Management Consultancy and Tax
+            Practicing, we've established ourselves as leaders in the industry,
+            working with various government agencies.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-4">

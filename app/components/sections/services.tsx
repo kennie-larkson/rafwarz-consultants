@@ -1,6 +1,18 @@
 export function ServicesSection() {
   const services = [
     {
+      title: "Management Consultancy",
+      description:
+        "Describes the service as providing expert guidance to enhance business operations and strategy",
+      icon: "📊",
+    },
+    {
+      title: "Tax Practicing",
+      description:
+        "Focuses on comprehensive tax planning and compliance services.",
+      icon: "📊",
+    },
+    {
       title: "Revenue Strategy",
       description:
         "Comprehensive revenue collection strategy development and implementation",
@@ -30,7 +42,7 @@ export function ServicesSection() {
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
             <div
               key={service.title}

@@ -11,7 +11,7 @@ export function HeroSection() {
             <span className="block text-blue-400">MANAGEMENT CONSULTANTS</span>
           </h1>
           <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
-            Decades of Excellence in Revenue Collection Solutions
+            Your trusted partner in Management Consultancy and Tax Practicing
           </p>
           {/* <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-colors">
             Get Started
