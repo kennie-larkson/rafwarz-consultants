@@ -1,16 +1,44 @@
-import { Suspense } from "react";
-import { SubmissionsTableSkeleton } from "../components/admin/skeleton/submission-table-skeleton";
+"use client";
+import { useState } from "react";
 import { SubmissionsTable } from "../components/admin/submissions-table";
+import { InvitesTable } from "../components/admin/invites-table";
+import { InviteForm } from "../components/forms/invite-form";
 
 export default function AdminDashboard() {
+  const [activeTab, setActiveTab] = useState("submissions");
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">Subscription Requests</h1>
+        <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
+        <div className="mb-4">
+          <button
+            onClick={() => setActiveTab("submissions")}
+            className={`mr-4 py-2 px-4 rounded ${
+              activeTab === "submissions"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200"
+            }`}
+          >
+            Subscription Requests
+          </button>
+          <button
+            onClick={() => setActiveTab("invites")}
+            className={`py-2 px-4 rounded ${
+              activeTab === "invites" ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            Manage Invites
+          </button>
+        </div>
 
-        <Suspense fallback={<SubmissionsTableSkeleton />}>
-          <SubmissionsTable />
-        </Suspense>
+        {activeTab === "submissions" && <SubmissionsTable />}
+        {activeTab === "invites" && (
+          <>
+            <InviteForm />
+            <InvitesTable />
+          </>
+        )}
       </div>
     </div>
   );
