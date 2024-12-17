@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+    <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 text-white pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
