@@ -25,13 +25,13 @@ export function Navbar() {
               Home
             </Link>
             <Link
-              href="admin/signup"
+              href="/signup"
               className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
             >
               Sign Up
             </Link>
             <Link
-              href="admin/login"
+              href="/login"
               className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
             >
               Sign In
@@ -103,13 +103,13 @@ export function Navbar() {
               Home
             </Link>
             <Link
-              href="admin/signup"
+              href="/signup"
               className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
             >
               Sign Up
             </Link>
             <Link
-              href="admin/login"
+              href="/login"
               className="text-gray-800 dark:text-gray-200 hover:text-blue-500"
             >
               Sign In
