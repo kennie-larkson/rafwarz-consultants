@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "RAFWARZ INNOVATIVE MANAGEMENT CONSULTANTS",
-  description: "Decades of excellence in revenue collection solutions",
+  description:
+    "Your trusted partner in Management Consultancy and Tax Practicing",
 };
 
 export default function RootLayout({
