@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function SignupPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const signup_token = searchParams.get("token");
+  /*  const searchParams = useSearchParams();
+  const signup_token = searchParams.get("token"); */
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
