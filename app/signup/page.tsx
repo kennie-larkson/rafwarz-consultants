@@ -1,22 +1,42 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function SignupPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const signup_token = searchParams.get("token");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    // Get the complete URL
+    const currentUrl = window.location.href;
+
+    // Parse the URL
+    const url = new URL(currentUrl);
+
+    // Get the token from the query parameters
+    const tokenParam = url.searchParams.get("token");
+    console.log("token good: ", tokenParam);
+
+    if (tokenParam) {
+      setToken(tokenParam); // Set the token state
+    } else {
+      console.error("Token is missing from the URL");
+    }
+  }, []);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      const response = await fetch("/api/admin-signup", {
+      const response = await fetch("/api/admin/admin-signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

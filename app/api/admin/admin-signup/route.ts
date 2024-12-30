@@ -4,6 +4,7 @@ import bcrypt from "bcrypt"; // Install bcrypt package
 
 export async function POST(request: Request) {
   const { email, password, token } = await request.json();
+  console.log(`${email}: ${password}: ${token}`);
 
   if (!email || !password || !token) {
     return NextResponse.json(
@@ -11,6 +12,7 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+  console.log("got here");
 
   try {
     // Check if the token is valid

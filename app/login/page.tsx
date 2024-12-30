@@ -14,12 +14,35 @@ export default function LoginPage() {
     e.preventDefault();
     setError("");
 
-    // Replace with your actual login logic
-    if (email === "admin@example.com" && password === "password") {
-      document.cookie = "rafwarz-admin-auth-token=your_token_here; path=/"; // Set a cookie
-      router.push("/admin"); // Redirect to admin page
-    } else {
-      setError("Invalid credentials");
+    try {
+      const response = await fetch("/api/admin/admin-login", {
+        // Assuming this is your login endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Invalid credentials");
+      }
+
+      const data = await response.json();
+      const token = data.token; // Assuming the token is returned in the response
+      console.log(token);
+
+      // Set the token in a cookie
+      document.cookie = `rafwarz-admin-auth-token=${token}; path=/`;
+
+      // Redirect to admin page
+      router.push("/admin");
+    } catch (err: any) {
+      if (err.code === 401) {
+        setError("Invalid credentials");
+      } else {
+        setError(err.message || "Failed to login. Please try again.");
+      }
     }
   };
 
