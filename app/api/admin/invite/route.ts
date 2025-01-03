@@ -1,7 +1,7 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
-import { v4 as uuidv4 } from "uuid"; // Install uuid package
-import { sendInviteEmail } from "../../../lib/emailService"; // Import the email sending function
+import { v4 as uuidv4 } from "uuid";
+import { sendInviteEmail } from "../../../lib/emailService";
 
 export async function POST(request: Request) {
   const { email } = await request.json();
@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Email is required" }, { status: 400 });
   }
 
-  const token = uuidv4(); // Generate a unique token
+  const token = uuidv4();
 
   try {
     await sql`
@@ -18,7 +18,6 @@ export async function POST(request: Request) {
       VALUES (${email}, ${token})
     `;
 
-    // Send the invitation email
     await sendInviteEmail(email, token);
 
     return NextResponse.json({ success: true });
