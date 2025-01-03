@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.7",
+    "@types/nodemailer": "^6.4.17",
     "@vercel/postgres": "^0.10.0",
     "bcrypt": "^5.1.1",
     "date-fns": "^4.1.0",
     "jose": "^5.9.6",
     "jsonwebtoken": "^9.0.2",
     "next": "15.1.0",
+    "nodemailer": "^6.9.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "uuid": "^11.0.3"
